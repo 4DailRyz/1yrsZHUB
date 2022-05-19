@@ -1,3 +1,4 @@
+
 local library = loadstring(game:HttpGet(('https://raw.githubusercontent.com/AikaV3rm/UiLib/master/Lib.lua')))()
 
 local w = library:CreateWindow("Anime Impact Simulator") 
@@ -307,14 +308,14 @@ elseif drop1 == "21" and ManAA.Value > 25000000000000 then
 }
 
 game:GetService("ReplicatedStorage").Remotes.ClientRemote:InvokeServer(unpack(args))
-elseif drop1 == "22" and ManAA.Value > 10000000000000 then
+elseif drop1 == "22" and ManAA.Value > 100000000000000 then
     local args = {
     [1] = "Exchange",
     [2] = 22
 }
 
 game:GetService("ReplicatedStorage").Remotes.ClientRemote:InvokeServer(unpack(args))
-elseif drop1 == "23" and ManAA.Value > 375000000000000 then
+elseif drop1 == "23" and ManAA.Value > 3750000000000000 then
     local args = {
     [1] = "Exchange",
     [2] = 23
@@ -328,14 +329,14 @@ elseif drop1 == "24" and ManAA.Value > 750000000000000 then
 }
 
 game:GetService("ReplicatedStorage").Remotes.ClientRemote:InvokeServer(unpack(args))
-elseif drop1 == "25" and ManAA.Value > 3500000000000000 then
+elseif drop1 == "25" and ManAA.Value > 35000000000000000 then
     local args = {
     [1] = "Exchange",
     [2] = 25
 }
 
 game:GetService("ReplicatedStorage").Remotes.ClientRemote:InvokeServer(unpack(args))
-elseif drop1 == "26" and ManAA.Value > 10000000000000000 then
+elseif drop1 == "26" and ManAA.Value > 100000000000000000 then
     local args = {
     [1] = "Exchange",
     [2] = 26
