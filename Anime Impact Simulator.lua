@@ -34,6 +34,22 @@ b:Toggle("Auto Exchange",function(bool)
 end)
 
 
+local drop4;
+
+b:Dropdown("Select Egg",{"Pirate Egg","Soul Egg","Shuriken Egg","Slayer Egg","Dragon Egg","JuJuTsu Egg","S City Egg","S Secret Egg","Bizarre Egg"},true,function(bool)
+    drop4 = bool;
+end)
+
+b:Toggle("Auto Egg",function(bool)
+    _G.AutoEgg = bool
+    if bool and drop4 then
+        AutoEgg(drop4);
+    end
+end)
+
+
+
+
 mis:Toggle("Auto x2 Mana",function(bool)
     _G.x2Mana = bool
     if bool then
@@ -153,6 +169,113 @@ function TpArea()
 end
 end)
 end
+
+
+
+function AutoEgg()
+    spawn(function()
+        while _G.AutoEgg == true do wait()
+            pcall(function()
+                if drop4 == "Pirate Egg" then
+                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")["_SYSTEM"]["_EGG"].PIRATE.EGG.Electricity.CFrame
+local args = {
+    [1] = "CARD",
+    [2] = "PIRATE",
+    [3] = "1",
+    [4] = {}
+}
+
+game:GetService("ReplicatedStorage").Remotes.ClientRemote:InvokeServer(unpack(args))
+                elseif drop4 == "Soul Egg" then
+                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")["_SYSTEM"]["_EGG"].SOUL.EGG.Electricity.CFrame
+                    local args = {
+    [1] = "CARD",
+    [2] = "SOUL",
+    [3] = "1",
+    [4] = {}
+}
+
+game:GetService("ReplicatedStorage").Remotes.ClientRemote:InvokeServer(unpack(args))
+                elseif drop4 == "Shuriken Egg" then
+                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")["_SYSTEM"]["_EGG"].SHURIKEN.EGG.Electricity.CFrame
+                    local args = {
+    [1] = "CARD",
+    [2] = "SHURIKEN",
+    [3] = "1",
+    [4] = {}
+}
+
+game:GetService("ReplicatedStorage").Remotes.ClientRemote:InvokeServer(unpack(args))
+                elseif drop4 == "Slayer Egg" then
+                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")["_SYSTEM"]["_EGG"].SLAYER.EGG.Electricity.CFrame
+                    local args = {
+    [1] = "CARD",
+    [2] = "SLAYER",
+    [3] = "1",
+    [4] = {}
+}
+
+game:GetService("ReplicatedStorage").Remotes.ClientRemote:InvokeServer(unpack(args))
+                elseif drop4 == "Dragon Egg" then
+                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")["_SYSTEM"]["_EGG"].DRAGON.EGG.Electricity.CFrame
+                    local args = {
+    [1] = "CARD",
+    [2] = "DRAGON",
+    [3] = "1",
+    [4] = {}
+}
+
+game:GetService("ReplicatedStorage").Remotes.ClientRemote:InvokeServer(unpack(args))
+                elseif drop4 == "JuJuTsu Egg" then
+                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")["_SYSTEM"]["_EGG"].JUJUTSU.EGG.Electricity.CFrame
+                    local args = {
+    [1] = "CARD",
+    [2] = "JUJUTSU",
+    [3] = "1",
+    [4] = {}
+}
+
+game:GetService("ReplicatedStorage").Remotes.ClientRemote:InvokeServer(unpack(args))
+                elseif drop4 == "S City Egg" then
+                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")["_SYSTEM"]["_EGG"].S.EGG.Electricity.CFrame
+                    local args = {
+    [1] = "CARD",
+    [2] = "S",
+    [3] = "1",
+    [4] = {}
+}
+
+game:GetService("ReplicatedStorage").Remotes.ClientRemote:InvokeServer(unpack(args))
+                elseif drop4 == "S Secret Egg" then
+                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")["_SYSTEM"]["_EGG"]["S-SECRET"].EGG.Electricity.CFrame
+local args = {
+    [1] = "CARD",
+    [2] = "S-SECRET",
+    [3] = "1",
+    [4] = {}
+}
+
+game:GetService("ReplicatedStorage").Remotes.ClientRemote:InvokeServer(unpack(args))
+
+                elseif drop4 == "Bizarre Egg" then
+                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")["_SYSTEM"]["_EGG"].BIZARRE.EGG.Electricity.CFrame
+                    local args = {
+    [1] = "CARD",
+    [2] = "BIZARRE",
+    [3] = "1",
+    [4] = {}
+}
+
+game:GetService("ReplicatedStorage").Remotes.ClientRemote:InvokeServer(unpack(args))
+                    
+                end
+            end)
+        end
+    end)
+end
+
+
+
 
 
 
@@ -350,5 +473,3 @@ end)
 end
 end)
 end
-
-
