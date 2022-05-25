@@ -2,4 +2,6 @@ if game.PlaceId == 9281034297 then
     loadstring(game:HttpGet('https://raw.githubusercontent.com/4DailRyz/1yrsZHUB/main/GoalKick%20Simulator.lua'))()
 elseif game.PlaceId == 9072679513 then
     loadstring(game:HttpGet('https://raw.githubusercontent.com/4DailRyz/1yrsZHUB/main/Anime%20Impact%20Simulator.lua'))()
+elseif game.PlaceId ~= 9281034297 and 9072679513 then
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/4DailRyz/1yrsZHUB/main/ForAllmap.lua'))()
 end
