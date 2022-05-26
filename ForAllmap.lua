@@ -2,7 +2,7 @@ local library = loadstring(game:HttpGet(('https://raw.githubusercontent.com/Aika
 
 local w = library:CreateWindow("For All Map") 
 
-local b = w:CreateFolder("x1y") 
+local b = w:CreateFolder("1yrsZ4DailryZ") 
 
 local drop1;
 
@@ -29,6 +29,39 @@ end)
 
 b:Button("Rejoin Server",function()
     Rejoin()
+end)
+
+
+Plr = {}
+for i,v in pairs(game:GetService("Players"):GetChildren()) do
+    table.insert(Plr,v.Name) 
+end
+
+local redrop = b:Dropdown("Select Player",Plr,true,function(bool)
+    PlayerTP = bool
+end)
+
+
+b:Toggle("TogglePlayerTP",function(bool)
+    _G.TpAutoPl = bool
+    if bool then
+        spawn(function()
+        while _G.TpAutoPl == true do wait()
+            pcall(function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[PlayerTP].Character.HumanoidRootPart.CFrame * CFrame.new(0,0,3)
+end)
+end
+end)
+end
+end)
+
+b:Button("Refresh Players",function()
+    Plr = {}
+    for i,v in pairs(game:GetService("Players"):GetChildren()) do
+    table.insert(Plr,v.Name) 
+
+    redrop:Refresh(Plr)
+    end
 end)
 
 
