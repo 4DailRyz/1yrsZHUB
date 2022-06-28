@@ -2268,5 +2268,4 @@ end
 	end
 end
 
-print("UI Library Credits: Denosaur @ v3rm")
 return library
