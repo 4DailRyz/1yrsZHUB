@@ -413,12 +413,12 @@ function Library:create(options)
 		Name = "1yrsZHUB",
 		Size = UDim2.fromOffset(600, 400),
 		Theme = self.Themes[settings.Theme],
-		Link = "https://github.com/deeeity/mercury-lib"
+		Link = "https://github.com/4DailRyz/1yrsZHUB"
 	}, options)
 
-	if getgenv and getgenv().MercuryUI then
-		getgenv():MercuryUI()
-		getgenv().MercuryUI = nil
+	if getgenv and getgenv().1yrsZHUB then
+		getgenv():1yrsZHUB()
+		getgenv().1yrsZHUB = nil
 	end
 
 
@@ -567,7 +567,7 @@ function Library:create(options)
 	end
 
 	if getgenv then
-		getgenv().MercuryUI = closeUI
+		getgenv().1yrsZHUB = closeUI
 	end
 
 	closeButton.MouseButton1Click:connect(function()
