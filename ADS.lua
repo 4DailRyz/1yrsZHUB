@@ -1,3 +1,5 @@
-wait(5)--sometimes put in autoexec and it doesn't run this is why i put wait()
+--Ui Orion New
+loadstring(game:HttpGet("https://raw.githubusercontent.com/4DailRyz/1yrsZHUB/main/ADSUiOrion.lua"))()
+--Ui Jan Old
 loadstring(game:HttpGet("https://raw.githubusercontent.com/4DailRyz/1yrsZHUB/main/Anime%20Dimensions%20Simulator.lua"))()
 
