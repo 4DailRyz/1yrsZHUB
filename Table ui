@@ -4067,3 +4067,76 @@ local IMGNAME = Instance.new("ImageLabel")
 		end
 	return top
 	end
+	
+	
+local Main = create.win():Taps("Main")
+
+local page1 = Main:newpage()
+local page2 = Main:newpage()
+local UiLib =  game:GetService("CoreGui").RobloxGui.Modules:FindFirstChild("Skidtest") 
+
+
+page1:Label("Auto Farm Function")
+
+page1:Toggle("Toggle")
+
+page1:Button("Destroy",function()
+    UiLib:Destroy()
+end
+)
+
+local lockfarm1 = page1:Toggle("Toggle Lock")
+
+lockfarm1:lock()
+
+   Wapon = {}
+for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do  
+    if v:IsA("Tool") then
+       table.insert(Wapon ,v.Name)
+    end
+end
+for i,v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do  
+    if v:IsA("Tool") then
+       table.insert(Wapon, v.Name)
+    end
+end
+
+page2:Label("Settings Auto Farm")
+local SelectWeapon = page2:Drop("Select Weapon / Combat",false,Wapon,function(Value)
+    SelectToolWeapon = Value
+    SelectToolWeaponOld = Value
+end)
+
+page2:Button("Refresh Weapon / Combat",function()
+	SelectWeapon:Clear()
+	for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do  
+		if v:IsA("Tool") then
+			SelectWeapon:Add(v.Name)
+		end
+	end
+	for i,v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do  
+		if v:IsA("Tool") then
+			SelectWeapon:Add(v.Name)
+		end
+	end
+end)
+
+   
+   page1:Slider("Slider",false,false,0,100,10,1,false,10,function()
+       print()
+   end)
+   
+   page1:TextBox("Host Name","",function(bool)
+       print("test")
+       end)
+   
+   local a = create.bar("")
+	
+	spawn(function()
+	    pcall(function()
+	        while task.wait() do
+	            a:loadbar()
+	        end
+	    end)
+	end) 
+return  create
