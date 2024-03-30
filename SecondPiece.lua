@@ -1,7 +1,7 @@
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
 local Window = OrionLib:MakeWindow({Name = "Second Piece", HidePremium = false, SaveConfig = true, ConfigFolder = "Second_Piece"})
 local Tab1 = Window:MakeTab({Name = "Main",Icon = nil,PremiumOnly = false})
-local SkilTab = Window:MakeTab({Name = "Main",Icon = nil,PremiumOnly = false})
+local SkilTab = Window:MakeTab({Name = "Skill",Icon = nil,PremiumOnly = false})
 local Tab2 = Window:MakeTab({Name = "Misc",Icon = nil,PremiumOnly = false})
 local Weaponlist = {}
 _G.Weapon = nil
@@ -56,6 +56,30 @@ SkilTab:AddToggle({
 	end    
 })
 
+SkilTab:AddToggle({
+	Name = "X",
+	Default = nil,
+	Callback = function(bool)
+		_G.SkillX = bool
+	end    
+})
+
+SkilTab:AddToggle({
+	Name = "C",
+	Default = nil,
+	Callback = function(bool)
+		_G.SkillC = bool
+	end    
+})
+
+SkilTab:AddToggle({
+	Name = "V",
+	Default = nil,
+	Callback = function(bool)
+		_G.SkillV = bool
+	end    
+})
+
 
 Tab2:AddButton({
 	Name = "Destroy Gui",
@@ -74,6 +98,15 @@ task.spawn(function ()
 		elseif _G.SkillZ then
 			game:GetService("VirtualInputManager"):SendKeyEvent(true, "Z", false, nil)
 			game:GetService("VirtualInputManager"):SendKeyEvent(false, "Z", false, nil)
+		elseif _G.SkillX then
+			game:GetService("VirtualInputManager"):SendKeyEvent(true, "X", false, nil)
+			game:GetService("VirtualInputManager"):SendKeyEvent(false, "X", false, nil)
+		elseif _G.SkillC then
+			game:GetService("VirtualInputManager"):SendKeyEvent(true, "C", false, nil)
+			game:GetService("VirtualInputManager"):SendKeyEvent(false, "C", false, nil)
+		elseif _G.SkillV then
+			game:GetService("VirtualInputManager"):SendKeyEvent(true, "V", false, nil)
+			game:GetService("VirtualInputManager"):SendKeyEvent(false, "V", false, nil)
 			
 		end
 		
