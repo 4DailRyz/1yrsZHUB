@@ -1,0 +1,92 @@
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+local Window = Library.CreateLib("Second Piece Last Update 31/03/2027", "DarkTheme")
+local Tab = Window:NewTab("Main")
+local Misc = Window:NewTab("Misc")
+local Section = Tab:NewSection("Main")
+local MiscConfig = Misc:NewSection("Misc")
+local Weaponlist = {}
+
+getgenv().savefilename = "Second_Piece_"..game.Players.LocalPlayer.Name..".txt"
+
+function sex()
+    -- reads jsonfile
+    local jsonData = readfile(savefilename)
+    local data = game:GetService("HttpService"):JSONDecode(jsonData)
+
+    -- global values
+
+    getgenv().Weapon = data.Weapon 
+    getgenv().AutoEquipTool = data.AutoEquipTool
+
+    ---// updates the json file
+    function updatejson()
+
+        local xdata = {
+            Weapon = getgenv().Weapon,
+            AutoEquipTool = getgenv().AutoEquipTool
+        }
+
+        local json = game:GetService("HttpService"):JSONEncode(xdata)
+        writefile(savefilename, json)
+
+end
+
+
+for i,v in pairs(game:GetService("Players").LocalPlayer.Backpack:GetChildren()) do
+    table.insert(Weaponlist,v.Name)
+end
+
+-------Main--------
+
+local WeaponName = Section:NewDropdown("Select Weapons", "Select Weapon to Equip", Weaponlist, function(bool)
+    getgenv().Weapon = bool
+    updatejson()
+end)
+
+Section:NewButton("Refreshes Weapons", nil, function()
+    Weaponlist = {}
+    for i,v in pairs(game:GetService("Players").LocalPlayer.Backpack:GetChildren()) do
+    table.insert(Weaponlist,v.Name)
+    WeaponName:Refresh(Weaponlist)
+       end
+  end)
+
+Section:NewToggle("Auto Equip Select Weapon", nil, function(bool)
+    getgenv().AutoEquipTool = bool
+    updatejson()
+end)
+
+-------Misc--------
+
+MiscConfig:NewKeybind("Hid Gui", nil, Enum.KeyCode.LeftControl, function()
+	Library:ToggleUI()
+end)
+
+end -- sex() function end
+
+--------------------------------------------------
+--------------------------------------------------
+
+if isfile(savefilename) then -- checks if file exist or not
+    sex()
+else
+    local xdata = {
+        Weapon = nil,
+        AutoEquipTool = false
+
+    }
+    local json = game:GetService("HttpService"):JSONEncode(xdata)
+    writefile(savefilename, json)
+
+    sex()
+end
+
+task.spawn(function ()
+	while task.wait() do pcall(function()
+		if getgenv().AutoEquipTool and not game.Players.LocalPlayer.Character:FindFirstChild(getgenv().Weapon) then
+			print("Equiping . . .")
+			game.Players.LocalPlayer.Character.Humanoid:EquipTool(game:GetService("Players").LocalPlayer.Backpack:FindFirstChild(getgenv().Weapon))
+		   end
+	   end)
+	end
+end)
