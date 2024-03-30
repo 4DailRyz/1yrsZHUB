@@ -1,0 +1,71 @@
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+local Window = Library.CreateLib("TITLE", "DarkTheme")
+local Tab = Window:NewTab("TabName")
+local Section = Tab:NewSection("Section Name")
+
+getgenv().savefilename = "TestFileSave_"..game.Players.LocalPlayer.Name..".json"
+
+function sex()
+    -- reads jsonfile
+    local jsonData = readfile(savefilename)
+    local data = HttpService:JSONDecode(jsonData)
+
+    -- global values
+
+    getgenv().teststats = data.teststats 
+
+    ---// updates the json file
+    function updatejson()
+
+        local xdata = {
+            teststats = getgenv().teststats
+        }
+
+        local json = HttpService:JSONEncode(xdata)
+        writefile(savefilename, json)
+
+end
+
+Section:NewButton("ButtonText", "Refresh Weapon", function()
+    print("Clicked")
+end)
+
+Section:NewToggle("ToggleText", nil, function(bool)
+    getgenv().teststats = bool
+end)
+
+Section:NewKeybind("Hid Gui", nil, Enum.KeyCode.LeftControl, function()
+	Library:ToggleUI()
+end)
+
+end -- sex() function end
+
+--------------------------------------------------
+--------------------------------------------------
+
+if isfile(savefilename) then -- checks if file exist or not
+    sex()
+else
+    local xdata = {
+        teststats = false
+
+    }
+    local json = HttpService:JSONEncode(xdata)
+    writefile(savefilename, json)
+
+    sex()
+end
+
+
+task.spawn(function ()
+    while wait() do pcall(function ()
+        if getgenv().teststats then
+            local player = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame 
+            print("TP")
+        end
+        
+    end)
+        
+    end
+    
+end)
