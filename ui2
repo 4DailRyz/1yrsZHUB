@@ -1,0 +1,76 @@
+local SolarisLib = loadstring(game:HttpGet("https://raw.githubusercontent.com/4DailRyz/1yrsZHUB/main/SolarisLib"))()
+
+local win = SolarisLib:New({
+  Name = "1yrsZHUB ",
+  FolderToSave = "SettingUi"
+})
+
+local tab = win:Tab("Tab 1")
+
+local sec = tab:Section("Tab 1")
+
+sec:Button("Button", function()
+  SolarisLib:Notification("Test", "This is a notification test.")
+end)
+
+sec:Toggle("Toggle", nil,"Toggle", function(bool)
+  print(bool)
+end)
+
+sec:Slider("Slider", 0,25,0,2.5,"Slider", function(bool)
+  print(bool)
+end)
+
+Plr = {}
+for i,v in pairs(game:GetService("Players"):GetChildren()) do
+    table.insert(Plr,v.Name) 
+end
+
+
+local dropdown = sec:Dropdown("Select Player",Plr,"","Select Player", function(bool)
+  print(bool)
+end)
+
+sec:Button("Refresh",function()
+    Plr = {}
+    for i,v in pairs(game:GetService("Players"):GetChildren()) do
+    table.insert(Plr,v.Name) 
+    end
+dropdown:Refresh(Plr,"",nil) --if nil and error user false
+dropdown:Set(Plr)
+end)
+
+
+
+local multidropdown = sec:MultiDropdown("Multi Dropdown", {"a","b","c","d","e"},{"b", "c"},"Dropdown", function(bool)
+  print(table.concat(bool, ", "))
+end)
+
+
+sec:Colorpicker("Colorpicker", Color3.fromRGB(255,255,255),"Colorpicker", function(bool)
+  _G.Colorpicker = bool
+end)
+
+sec:Textbox("Textbox", nil, function(bool)
+  _G.Textbox = bool
+end)
+
+sec:Bind("Hold Bind", Enum.KeyCode.E, nil, "BindHold", function(bool)
+  _G.Enum1 = bool
+end)
+
+sec:Bind("Normal Bind", Enum.KeyCode.F, nil, "BindNormal", function()
+  print("Bind pressed")
+end)
+
+--[[
+bind:Set(state <keycode>)
+]]
+
+--sec:Label(text <string>)
+local label = sec:Label("Label")
+
+--[[
+label:Set(text <string>)
+]]
+local tab2 = win:Tab("Tab 2")
